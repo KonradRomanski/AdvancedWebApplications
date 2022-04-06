@@ -1,0 +1,29 @@
+$color: rgb(255, 255, 233);
+
+body {
+    background-color: $color;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 5px solid $color;
+  }
+
+  th {
+      width: 33%;
+  }
+
+  td {
+      padding: 0.5%;
+  }
+
+  tr:nth-child(even) {
+    background-color: lightgray;
+  }
+  
+  button {
+      margin-right: 1%;
+  }

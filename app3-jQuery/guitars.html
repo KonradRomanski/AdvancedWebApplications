@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+        function load() {
+            let a;
+            $.getJSON("guitars.json", function (a) {
+                console.log(a);
+                for (var i = 0; i < a.Guitars.Guitar.length; i++) {
+                    $('#box').append('<div>' + a.Guitars.Guitar[i].Brand + ' - ' + a.Guitars.Guitar[i].Model + '</div>');
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="load()">Click me</button>
+    <div id="box"></div>
+</body>
+
+</html>

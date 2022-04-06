@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+        function get(url) {
+            return new Promise(function (resolve, reject) {
+                var req = new XMLHttpRequest();
+                req.open('GET', url);
+
+                req.onload = function () {
+                    if (req.status == 200) {
+                        resolve(req.response);
+                    } else {
+                        reject(Error(req.statusText));
+                    }
+                };
+
+                req.onerror = function () {
+                    reject(Error("Network Error"));
+                };
+
+                req.send();
+            });
+        }
+        function start() {
+            get('https://jsonplaceholder.typicode.com/posts').then(function (response) {
+                console.log("Success!", response);
+                $('#box').text(response);
+            }, function (error) {
+                console.error("Failed!", error);
+                $('#box').text("ERROR");
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="start()">Click me</button>
+    <div id="box" ></div>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+$olive: #e0e4cc;
+$blue: #6ad1e2;
+$orange: #f38630;
+$pink: #e9aeaf;
+$font-size: 16px;
+$margin: 1.5em;
+
+@mixin flex-column-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+@mixin flex-basic {
+  display: flex;
+  align-items: center;
+}
+
+@mixin border {
+  border: black 2px solid;
+}
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: $font-size;
+  padding: 0%;
+  margin: 0%;
+
+  #menu {
+    @include flex-basic;
+    margin: $margin $margin 0 $margin;
+    justify-content: space-between;
+    
+    #title {
+      @include flex-column-center;
+      flex-direction: row;
+    }
+    span {
+      font-size: 2 * $font-size;
+    }
+
+    #burger {
+      align-self: flex-end;
+      background-color: $olive;
+      border: 1px solid;
+      height: 45px;
+      width: 45px;
+      border-radius: 12px;
+      font-size: 2 * $font-size;
+      @include flex-column-center;
+    }
+  }
+
+    #content {
+      display: grid;
+      flex-grow: 1;
+      margin: $margin;
+      
+      .entry {
+        overflow: hidden;
+        align-self: stretch;
+        width: 100%;
+
+
+        display: flex;
+        flex-direction: column;
+
+        @include border;
+        background-color: $olive;
+        height: 17em;
+
+        .subtitle {
+          font-size:  1.5 * $font-size;
+          align-self: flex-end;
+          padding: 1.5% 15% 1.5% 15%;
+          border: 0;
+          border-bottom: 2px solid;
+          border-left: 2px solid;
+        }
+        
+
+        #st1 {background-color: $blue;}
+        #st2 {background-color: $orange;}
+        #st3 {background-color: $pink;}
+
+        .text {
+          align-self: center;
+          text-align: justify;
+          margin: $margin;
+        }
+      }
+    }
+
+    #footer {
+      flex: 1;
+      @include flex-column-center;
+      @include border;  
+      max-height: 100px;
+      min-height: 100px;
+      width: 100%;
+      background-color: $olive;
+      
+
+      #info {
+        @include flex-column-center;
+        #author {
+            font-weight:bold;
+        }
+      }
+    }
+}
+
+
+
+@media screen and (max-width: 599px){
+  #burger {
+    cursor: grab;
+  }
+
+  #options, #titleText {
+    display: none;
+    visibility: hidden;
+  }
+
+  #content {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content);;
+    column-gap: $margin;
+    row-gap: $margin;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  #burger {
+    cursor: grab;
+  }
+
+  #options {
+    display: none;
+    visibility: hidden;
+  }
+
+  #en1 {
+    width: 100%;
+  }
+
+  #content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(min-content, max-content);
+    column-gap: $margin;
+    row-gap: $margin;
+
+    #en1 {
+      grid-column: 1 / span 2;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1024px){
+  #burger {
+    display: none;
+    visibility: hidden;
+  }
+
+  #options {
+    @include flex-basic;
+    justify-content: flex-end;
+    align-self: flex-start;
+
+    div {
+      margin-right: $margin;
+    }
+  }
+
+  #content {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: $margin;
+  }
+
+}
