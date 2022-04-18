@@ -1,0 +1,22 @@
+{"entries": [
+    {
+        "id": 0,
+        "data": {
+            "name": "Pulp fiction",
+            "description": "A movie",
+            "img": "https://fwcdn.pl/fpo/10/39/1039/7517880.3.jpg",
+            "rating": 6,
+            "link": "https://www.filmweb.pl/film/Pulp+Fiction-1994-1039"
+        }
+    },
+    {
+        "id": 1,
+        "data": {
+            "name": "2001: A Space Odyssey",
+            "description": "A Sci-Fi movie",
+            "img": "https://fwcdn.pl/fpo/14/58/1458/7592150.3.jpg",
+            "rating": 8,
+            "link": "https://www.filmweb.pl/film/2001%3A+Odyseja+kosmiczna-1968-1458"
+        }
+    }
+]}
