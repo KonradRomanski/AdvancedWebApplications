@@ -2,10 +2,9 @@ import './Entry.css'
 import { Card, Button, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Entry(params) {
+function Entry({add}) {
     return (
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={params.img} />
         <Card.Body>
           <Card.Title>Add a new item</Card.Title>
         <Form className="d-flex flex-column gap-4 p-2">
@@ -39,7 +38,13 @@ function Entry(params) {
                 className="me-2"
                 aria-label="Link"
                 />
-                <Button variant="outline-success">Add</Button>
+                <Button variant="outline-success" onClick={() => {add({
+                  "name": "",
+                  "description": "",
+                  "img": "",
+                  "rating": "",
+                  "link": ""
+                })}}>Add</Button>
           {/* <Button variant="primary" href={params.link}>Add</Button> */}
             </Form>
         </Card.Body>

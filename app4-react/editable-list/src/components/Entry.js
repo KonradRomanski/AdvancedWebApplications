@@ -17,7 +17,7 @@ function Entry(params) {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <Button className='btn btn-danger btn-sm' >Remove</Button>
+            <Button className='btn btn-danger btn-sm' onClick={() => {params.remove(params.id)}} >Remove</Button>
         </Card.Footer>
       </Card>
     )

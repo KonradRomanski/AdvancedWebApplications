@@ -1,11 +1,12 @@
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-function Header({sortA, sortD}) {
+function Header({sortA, sortD, search, restore}) {
+    var _search = "Pulp fiction"
     return (
         <Navbar bg="light" expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#">Movie collection</Navbar.Brand>
+            <Navbar.Brand href="#" onClick={() => restore()}>Movie collection</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -33,8 +34,10 @@ function Header({sortA, sortD}) {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                // value={_search}
+                inputRef={(input) => {_search = input}}
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button variant="outline-success" onClick={() => search(_search)}>Search</Button>
             </Form>
             </Navbar.Collapse>
         </Container>
