@@ -18,5 +18,15 @@
             "rating": 8,
             "link": "https://www.filmweb.pl/film/2001%3A+Odyseja+kosmiczna-1968-1458"
         }
+    },
+    {
+        "id": 2,
+        "data": {
+            "name": "Star Wars: The Rise of Skywalker",
+            "description": "It's not a movie",
+            "img": "https://fwcdn.pl/fpo/10/50/671050/7922838.3.jpg",
+            "rating": 5,
+            "link": "https://www.filmweb.pl/film/Gwiezdne+wojny%3A+Skywalker.+Odrodzenie-2019-671050"
+        }
     }
 ]}
