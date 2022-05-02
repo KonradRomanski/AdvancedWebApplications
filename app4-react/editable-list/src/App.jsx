@@ -54,13 +54,32 @@ function App() {
     setAll(all.filter(el => el.id != id))
   }
 
+  const addRating = (id) => {
+    setAll(all.map(el => {
+      if (el.id !== id) return el;
+      const n = el;
+      n.data.rating++;
+      return n;
+      }))
+  }
+
+  const rmRating = (id) => {
+    setAll(all.map(el => {
+      if (el.id !== id) return el;
+      const n = el;
+      n.data.rating--;
+      return n;
+      }))
+  }
+
+
   return (
     <div className="App">
       <Header sortA={sortA} sortD={sortD} search={search} restore={restore} />
 
       <main className="Main">
         {data.map((el) => (
-          <Entry entry={el} onRemove={remove}/>
+          <Entry entry={el} onRemove={remove} addRating={addRating} rmRating={rmRating}/>
         ))}
         <Adder add={add} />
       </main>

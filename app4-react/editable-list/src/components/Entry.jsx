@@ -2,7 +2,7 @@ import "./Entry.css";
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
-function Entry({ entry, onRemove }) {
+function Entry({ entry, onRemove, addRating, rmRating}) {
   const { id, data } = entry;
   const { img, name, description, rating, link } = data;
   const EmptyStar = () => (
@@ -56,6 +56,22 @@ function Entry({ entry, onRemove }) {
           }}
         >
           Remove
+        </Button>
+        <Button
+          className="btn btn-sm m-1"
+          onClick={() => {
+            rmRating(id);
+          }}
+        >
+          -
+        </Button>
+        <Button
+          className="btn btn-sm m-1"
+          onClick={() => {
+            addRating(id);
+          }}
+        >
+          +
         </Button>
       </Card.Footer>
     </Card>
