@@ -1,0 +1,23 @@
+<body>
+    <h1>Welocme to your cart!</h1>
+    <h2>You've added these items:</h2>
+    <% console.log("CART: ", cart) %> 
+    <% cart.map((item) => { %>
+        <div><%=item%> </div>
+        <form action="http://localhost:<%=port%>/store/removeItem<%=item%> ">
+            <input type="submit" value="Remove item" />
+        </form>
+    <% }) %> 
+    <br>
+    <br>
+    <form action="http://localhost:<%=port%>/checkout">
+        <input type="submit" value="Checkout" />
+    </form>
+    <form action="http://localhost:<%=port%>/store">
+        <input type="submit" value="Store" />
+    </form>
+    <form action="http://localhost:<%=port%>/store/clear">
+        <input type="submit" value="Clear" />
+    </form>
+
+</body>
