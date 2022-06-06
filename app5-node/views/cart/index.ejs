@@ -4,19 +4,19 @@
     <% console.log("CART: ", cart) %> 
     <% cart.map((item) => { %>
         <div><%=item%> </div>
-        <form action="http://localhost:<%=port%>/store/removeItem<%=item%> ">
+        <form action="http://localhost:<%=port%>/store/removeItem<%=item%> " method="post">
             <input type="submit" value="Remove item" />
         </form>
     <% }) %> 
     <br>
     <br>
-    <form action="http://localhost:<%=port%>/checkout">
+    <form action="http://localhost:<%=port%>/checkout" method="post">
         <input type="submit" value="Checkout" />
     </form>
     <form action="http://localhost:<%=port%>/store">
         <input type="submit" value="Store" />
     </form>
-    <form action="http://localhost:<%=port%>/store/clear">
+    <form action="http://localhost:<%=port%>/store/clear" method="post">
         <input type="submit" value="Clear" />
     </form>
 

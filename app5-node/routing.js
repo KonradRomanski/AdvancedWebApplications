@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pgp = require('pg-promise')(/* options */)
-const db = pgp('postgres://postgres:postgrespw@localhost:55003')
+const db = pgp('postgres://postgres:postgrespw@localhost:55000')
 
 
 // db.query("DELETE FROM store WHERE products = 'book1' OR products = 'book2'")
@@ -22,6 +22,9 @@ const db = pgp('postgres://postgres:postgrespw@localhost:55003')
 // db.query("INSERT INTO store (products) VALUES ('Lśnienie')")
 // .then((data) => {console.log('INSERT DONE')})
 // .catch((e) => {console.log('ERROR:', e)})
+db.query("INSERT INTO store (products) VALUES ('test')")
+.then((data) => {console.log('INSERT DONE')})
+.catch((e) => {console.log('ERROR:', e)})
 
 db.query('SELECT products AS value FROM store')
 .then((data) => {console.log('DATA:', data)})
@@ -31,7 +34,7 @@ db.query('SELECT products AS value FROM store')
 //     cart[request.sessionID] = [];
 //     next();
 // })
-router.get('/store/addItem:element', (request, response) => {
+router.post('/store/addItem:element', (request, response) => {
     el = request.params.element;
     if (!cart[request.sessionID].find(e => e == el)) {
         cart[request.sessionID].push(el);
@@ -43,7 +46,7 @@ router.get('/store/addItem:element', (request, response) => {
     response.redirect('/store')
 })
 
-router.get('/store/removeItem:element', (request, response) => {
+router.post('/store/removeItem:element', (request, response) => {
     el = request.params.element;
     if (cart[request.sessionID].find(e => e == el)) {
         console.log("INFO", cart, el)
@@ -56,18 +59,22 @@ router.get('/store/removeItem:element', (request, response) => {
     response.redirect('/cart')
 })
 
-router.get('/store/clear', (request, response) => {
+router.post('/store/clear', (request, response) => {
     cart[request.sessionID] = [];
     response.redirect('/cart')
 })
 
-router.get('/checkout', (request, response) => {
-    cart[request.sessionID].map((item, index) => {
+router.post('/checkout', (request, response) => {
+    var result
+    let alert = require('alert'); 
+    cart[request.sessionID]?.map((item, index) => {
         console.log(item, index)
-        db.query("DELETE FROM store WHERE products = '" + item + "'")
+        result = db.query("DELETE FROM store WHERE products = '" + item + "'")
         .then(console.log('Deleted ' + item + 'from store table'))
-        .catch((e) => {console.log('ERROR:', e)})
+        .catch((e) => {console.log('ERROR:', e)});
     })
+    console.log("RESULT", result)
+    alert("DB response: " + result)
     cart[request.sessionID] = [];
     response.redirect('/cart')
 })
@@ -79,6 +86,8 @@ router.all('/', (request, response) => {
     response.redirect('/store');
 });
 router.get('/store', (request, response) => {
+    if (cart.valueOf(request.sessionID) == {}) 
+        cart[request.sessionID] = [];
     db.query('SELECT products AS value FROM store')
     .then((data) => {response.render('store/index', {'data': data, 'port': port, adddItem: 'addItem'});})
     .catch((e) => {console.log('ERROR:', e)})

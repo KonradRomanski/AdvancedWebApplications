@@ -4,7 +4,7 @@
         <h2>Add items you want%> to buy or go to your <a href="http://localhost:<%=port%>/cart ">cart</a> !</h2>
         <% data.map((val) => { %>
             <div><%=val.value%> </div>
-            <form action="http://localhost:<%=port%>/store/addItem<%=val.value%> ">
+            <form action="http://localhost:<%=port%>/store/addItem<%=val.value%> " method="post">
                 <input type="submit" value="Add item" />
             </form>
             <br>
