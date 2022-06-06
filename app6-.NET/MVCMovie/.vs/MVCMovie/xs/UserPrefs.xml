@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{E968AD25-1FD6-46A8-81D0-6A825979FB8E}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MVCMovie/Models/Movie.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MVCMovie/Controllers/HelloWorldController.cs">
     <Files>
       <File FileName="MVCMovie/Program.cs" Line="16" Column="1" />
-      <File FileName="MVCMovie/Controllers/HelloWorldController.cs" />
-      <File FileName="MVCMovie/Controllers/HomeController.cs" />
+      <File FileName="MVCMovie/Controllers/HelloWorldController.cs" Line="21" Column="13" />
+      <File FileName="MVCMovie/Controllers/HomeController.cs" Line="1" Column="1" />
       <File FileName="MVCMovie/Startup.cs" />
       <File FileName="MVCMovie/Views/Home/Index.cshtml" />
       <File FileName="MVCMovie/Views/Shared/_Layout.cshtml" />
@@ -16,10 +16,10 @@
         <State name="__root__">
           <Node name="MVCMovie" expanded="True">
             <Node name="MVCMovie" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Movie.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HelloWorldController.cs" selected="True" />
               </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="HelloWorld" expanded="True" />
                 <Node name="Shared" expanded="True" />
